@@ -107,3 +107,20 @@ stages:
             artifact: drop
           - script: echo 'Fake deploy'
             displayName: 'Azure App Service Deploy: website'
+
+- stage: 'Staging'
+  displayName: 'Deploy to the staging environment'
+  dependsOn: Test
+  jobs:
+  - deployment: Deploy
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    environment: staging
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: drop
+          - script: echo 'Fake deploy'
+            displayName: 'Azure App Service Deploy: website'
