@@ -70,8 +70,6 @@ stages:
     pool:
       vmImage: 'Ubuntu-16.04'
     environment: dev
-    variables:
-    - group: Release
     strategy:
       runOnce:
         deploy:
@@ -89,8 +87,6 @@ stages:
     pool:
       vmImage: 'Ubuntu-16.04'
     environment: test
-    variables:
-    - group: 'Release'
     strategy:
       runOnce:
         deploy:
@@ -114,8 +110,6 @@ stages:
     pool:
       vmImage: 'Ubuntu-16.04'
     environment: staging
-    variables:
-    - group: 'Release'
     strategy:
       runOnce:
         deploy:
