@@ -99,7 +99,7 @@ stages:
               azureSubscription: 'Azure'
               appType: 'webApp'
               appName: 'tailspin-space-game-web-test-rothie'
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/Tailspin.SpaceGame.Web.zip'
               deploymentMethod: 'auto'
 
 - stage: 'Staging'
