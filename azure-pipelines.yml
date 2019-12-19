@@ -78,12 +78,8 @@ stages:
           steps:
           - download: current
             artifact: drop
-          - task: AzureWebApp@1
+          - script: echo 'Fake deploy'
             displayName: 'Azure App Service Deploy: website'
-            inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
-              appName: '$(WebAppNameDev)'
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
 
 - stage: 'Test'
   displayName: 'Deploy to the test environment'
@@ -104,9 +100,11 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
-              appName: '$(WebAppNameTest)'
+              azureSubscription: 'Azure'
+              appType: 'webApp'
+              appName: 'tailspin-space-game-web-test-rothie'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+              deploymentMethod: 'auto'
 
 - stage: 'Staging'
   displayName: 'Deploy to the staging environment'
@@ -124,9 +122,5 @@ stages:
           steps:
           - download: current
             artifact: drop
-          - task: AzureWebApp@1
+         - script: echo 'Fake deploy'
             displayName: 'Azure App Service Deploy: website'
-            inputs:
-              azureSubscription: 'Resource Manager - Tailspin - Space Game'
-              appName: '$(WebAppNameStaging)'
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
