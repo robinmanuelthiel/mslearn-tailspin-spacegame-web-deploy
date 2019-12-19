@@ -122,5 +122,5 @@ stages:
           steps:
           - download: current
             artifact: drop
-         - script: echo 'Fake deploy'
+          - script: echo 'Fake deploy'
             displayName: 'Azure App Service Deploy: website'
